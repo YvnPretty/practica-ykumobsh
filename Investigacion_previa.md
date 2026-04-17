@@ -1,55 +1,25 @@
-# Investigacion Previa: Analisis de una Papeleria
+# Investigación Previa: Sistema para Papelería Tradicional
 
-Este documento detalla el funcionamiento basico de una papeleria tradicional en Mexico y los procesos que se deben considerar para el desarrollo del software.
+## 1. Funcionamiento del Tipo de Negocio Elegido
 
-# Descripcion General del Negocio
+El modelo operativo de una papelería urbana se basa en el comercio minorista (retail) de alta frecuencia transaccional. Funciona mediante la adquisición de artículos escolares, de oficina y de tecnología a distribuidores mayoristas, para su venta directa al cliente final.
 
-- Tipo de Negocio: Papeleria urbana mediana enfocada en articulos escolares y oficina.
-- Publico Objetivo: Estudiantes, padres de familia, maestros y pequeños negocios.
-- Servicios Adicionales: Fotocopiado, impresiones, enmicado y engargolado.
+Desde la perspectiva de análisis de sistemas, el modelo opera como un sistema de flujo continuo donde las entradas (inputs) son la recepción de nueva mercancía y actualizaciones de catálogos, y las salidas (outputs) son las transacciones de venta, prestación de servicios y decrementos del stock. 
 
-# Actores del Negocio
+Una característica crítica y particular de este negocio es el manejo de una gran variedad de entidades (miles de SKUs) con atributos dinámicos (venta por unidad o caja) y la comercialización de servicios "intangibles" (copias, escaneos, engargolados) que carecen de código de barras físico y requieren captura especial en el sistema.
 
-- Dueño o Gerente: Administra finanzas, compras y politicas de precio.
-- Cajeros: Realizan ventas, cobran y atienden dudas en el mostrador.
-- Proveedores: Distribuidores mayoristas de marcas de papeleria.
-- Clientes: Personas fisicas o empresas que requieren productos o servicios.
-- Autoridades: SAT (facturacion e impuestos) y gobierno municipal (licencias).
+## 2. Identificación de Procesos Básicos (Reglas Funcionales)
 
-# Procesos Basicos Identificados
+A continuación se desglosan los procesos operativos fundamentales que sustentan el negocio:
 
-# 1. Ventas y Atencion al Cliente
-- Escaneo de productos por codigo de barras o busqueda manual.
-- Suma de servicios adicionales (copias, impresiones).
-- Aplicacion de descuentos por volumen (por ejemplo, compra de cajas de hojas).
-- Recepcion de pagos en efectivo, tarjeta o transferencias digitales.
+### A. Proceso de Ventas (Transacciones y Mostrador)
+El flujo del proceso inicia cuando el cliente se presenta a mostrador. El cajero captura los ítems (mediante lectura de código de barras o búsqueda predictiva de texto). El sistema debe realizar un cálculo en tiempo real del subtotal, aplicar reglas lógicas de negocio (como descuentos por caja o mayoreo), sumar impuestos y totalizar. Una vez completado el cobro, la transacción finaliza (commit) garantizando la atomicidad, generando un ticket y actualizando el inventario instantáneamente.
 
-# 2. Gestion de Inventarios
-- Registro de entrada de mercancia nueva.
-- Control de existencias actuales (stock).
-- Alerta automatica cuando un producto llega a su nivel minimo.
-- Registro de mermas o productos dañados que no se pueden vender.
+### B. Control e Integridad de Inventario (Gestión de Stock)
+Es el proceso responsable de mantener la coherencia de los datos en almacén. Involucra el alta, baja y modificación de artículos. Una funcionalidad clave es el manejo de "umbrales y disparadores" (triggers lógicos); el sistema debe ser capaz de rastrear constantemente las salidas por ventas y, cuando un artículo alcanza su nivel mínimo programado, emitir alertas de reabastecimiento para el administrador del local. También regula el registro de mermas (productos dañados o devueltos).
 
-# 3. Facturacion y Obligaciones Fiscales
-- Generacion de facturas individuales CFDI 4.0 cuando el cliente lo solicita.
-- Creacion de la factura global diaria por ventas al publico en general.
-- Registro de impuestos aplicables (IVA en productos gravados).
+### C. Atención al Cliente y Soporte de Servicios Externos
+A diferencia del inventario físico, la papelería provee servicios que pueden considerarse de "stock infinito" dentro del software (ej. impresiones a color, renta de computadoras, copias fotostáticas). El proceso para atender al cliente requiere una interfaz que permita tabular precios dinámicamente según variables de entrada (por ejemplo: `Total a pagar = PrecioBase * NumeroPáginas`).
 
-# 4. Compras a Proveedores
-- Lista de productos faltantes segun el nivel de stock.
-- Comparacion de precios entre diferentes proveedores.
-- Registro de facturas de compra para control de gastos.
-
-# Reglas de Negocio Preliminares
-
-- Emision Obligatoria: Toda venta debe generar un ticket o factura segun la ley.
-- Politica de Devoluciones: Solo se aceptan devoluciones con ticket de compra.
-- Stock Minimo: Los productos de alta rotacion deben tener una alerta de reabastecimiento.
-- Servicios Digitales: Las impresiones solo se realizan si el archivo es legible.
-
-# Preguntas para Profundizar en el Analisis
-
-- ¿Como se registran actualmente las copias e impresiones si no tienen codigo de barras?
-- ¿Cual es el criterio para decidir cuando un producto necesita reabastecimiento?
-- ¿Que metodos de pago son los mas utilizados por los clientes actuales?
-- ¿Como se maneja el corte de caja si hay varios empleados en diferentes turnos?
+### D. Gestión de Pagos, Cortes de Caja y Arqueo Diario
+Este proceso centraliza el flujo de ingresos. Acepta múltiples métodos de entrada (efectivo, tarjeta, transferencias). Al concluir un turno activo (cierre de la sesión de usuario del empleado), se ejecuta un proceso de auditoría conocido como "corte en Z" o arqueo de caja. El sistema recolecta y cruza todas las transacciones generadas por ese usuario contra los fondos físicos, asegurando que no haya discrepancias financieras antes del logout.
