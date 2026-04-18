@@ -1,7 +1,7 @@
 # Entrevista sobre Procesos de la Papelería
 
 **¿Cómo se realiza una venta desde que llega el cliente hasta que paga?**
-Saludo y servicio requiere claro
+Primero abordamos con un saludo y brindamos el servicio o producto que quiere el cliente. Y al finalizar su elección, procedemos al pago y ya.
 
 **¿Las ventas se registran manualmente o en algún sistema?**
 Manualmente
