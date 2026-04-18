@@ -1,6 +1,6 @@
 <div align="center">
 
-![Instituto Tecnológico de Milpa Alta II](tecnmmilpa_small.jpg)
+![Instituto Tecnológico de Milpa Alta II](tecnmmilpa_medium.jpg)
 
 **Instituto Tecnológico de Milpa Alta II**
 
