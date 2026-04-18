@@ -1,7 +1,6 @@
 <div align="center">
 
-![Tecnológico Nacional de México](tec.jpeg) 
-![Instituto Tecnológico de Milpa Alta II](tecnmmilpa.jpg)
+<img src="tecnmmilpa.jpg" height="150" />
 
 **Instituto Tecnológico de Milpa Alta II**
 
