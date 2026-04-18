@@ -1,3 +1,20 @@
+<div align="center">
+
+**Instituto Tecnológico de Milpa Alta II**
+
+**Materia:** Fundamentos de Ingeniería de Software  
+**Docente:** Roldán Aquino Segura
+
+**Equipo: Ingeniebrios (Papelería)**  
+Edgar Salazar López  
+César Meza Corella  
+Misael Silva Fragoso  
+Marco Antonio Aguilar Guerrero  
+
+</div>
+
+---
+
 # Reporte de Análisis: Funcionamiento del Negocio y Análisis de Requerimientos
 
 ## 1. Investigación Previa
