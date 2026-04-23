@@ -42,4 +42,4 @@ Se han definido las siguientes tareas dentro del tablero de Jira bajo la épica 
 1. **PAP-1:** Diseño de esquema de base de datos (Est. 4h).
 2. **PAP-2:** Implementación de módulo de autenticación (Est. 6h).
 3. **PAP-3:** Desarrollo de interfaz de punto de venta (Est. 12h).
-4. **PAP-4:** Integración de API de facturación SAT (Est. 16h).
+4. **PAP-4:** Integración de módulo de facturación electrónica (Est. 16h).
