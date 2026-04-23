@@ -1,7 +1,6 @@
 # Planificación Integral del Sistema: Papelería Eficiente
 ID del Proyecto: BLOC-2
 Estatus: Fase de Diseño y Planificación
-Responsable: YvnPretty
 
 ---
 
@@ -42,4 +41,3 @@ Se ha implementado un proceso de diseño centrado en la operatividad para garant
 
 ---
 
-Este documento constituye el entregable oficial para el ticket de seguimiento BLOC-2.
