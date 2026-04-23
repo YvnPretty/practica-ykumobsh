@@ -42,12 +42,4 @@ Se ha implementado un proceso de diseño centrado en la operatividad para garant
 
 ---
 
-## Listado de Tareas Técnicas (Gestión en Jira)
-1.  Arquitectura y normalización de la base de datos relacional.
-2.  Implementación de protocolos de seguridad y gestión de perfiles de usuario.
-3.  Desarrollo del motor lógico para el procesamiento de transacciones.
-4.  Construcción de componentes dinámicos para el panel de ventas.
-5.  Fase de auditoría de errores y validación de despliegue.
-
----
 Este documento constituye el entregable oficial para el ticket de seguimiento BLOC-2.
