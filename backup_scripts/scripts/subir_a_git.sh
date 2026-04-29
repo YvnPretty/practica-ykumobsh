@@ -9,11 +9,14 @@ echo "Configurando repositorio..."
 # Intentar configurar el remoto si no existe o actualizarlo
 git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
 
-echo "Añadiendo archivos..."
-git add .
+echo "Limpiando el área de preparación..."
+git reset
 
-echo "Creando commit..."
-git commit -m "Estructura de carpetas, scripts de instalación y reporte HTML"
+echo "Añadiendo solo lo necesario (scripts y reportes)..."
+git add scripts/ log.txt historial_comandos.md historial_comandos.pdf 2>/dev/null
+
+echo "Creando commit limpio..."
+git commit -m "Solo scripts y reportes de actividad"
 
 echo "Sincronizando con cambios remotos..."
 # Guardar cambios temporales para permitir el pull/rebase
