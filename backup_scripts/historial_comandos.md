@@ -1,4 +1,5 @@
 # Reporte de Actividad en Terminal
+**Repositorio:** [practica-ykumobsh](https://github.com/YvnPretty/practica-ykumobsh)
 **Fecha:** 29 de Abril, 2026
 
 ## Resumen de Acciones
@@ -23,5 +24,4 @@ $ mkdir -p proyectos scripts backups
 $ ls -la /home/yvnsu/backup_scripts
 ```
 
-> [!NOTE]
-> *Nota: Debido a restricciones en el entorno de ejecución, se han proporcionado scripts automatizados para que el usuario los ejecute directamente.*
+

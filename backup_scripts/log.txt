@@ -1,5 +1,6 @@
 # Log de Instalación y Actividad
 Registro de comandos y procesos realizados el 29-04-2026.
+**Repositorio:** https://github.com/YvnPretty/practica-ykumobsh
 
 ## Historial de Comandos
 1. [FALLIDO] apt install -y ufw (Error de permisos: /var/lib/dpkg/lock-frontend).
