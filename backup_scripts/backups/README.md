@@ -1,0 +1,2 @@
+# Backups
+Carpeta para respaldos.

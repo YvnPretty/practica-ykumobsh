@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Comandos - Terminal</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f4f7f6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .command-box { background: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .status { font-weight: bold; }
+        .success { color: #2ecc71; }
+        .failed { color: #e74c3c; }
+        .date { color: #7f8c8d; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Reporte de Actividad en Terminal</h1>
+    <p class="date">Fecha: 29 de Abril, 2026</p>
+
+    <h2>Resumen de Acciones</h2>
+    <table>
+        <tr>
+            <th>Comando</th>
+            <th>Estado</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td><code>apt install -y ufw</code></td>
+            <td class="status failed">Fallido</td>
+            <td>Error de permisos (lock-frontend).</td>
+        </tr>
+        <tr>
+            <td><code>mkdir proyectos scripts backups</code></td>
+            <td class="status success">Completado</td>
+            <td>Creación de estructura de base.</td>
+        </tr>
+        <tr>
+            <td><code>nvm install node</code></td>
+            <td class="status success">Pendiente*</td>
+            <td>Script de instalación generado en <code>scripts/install_node.sh</code>.</td>
+        </tr>
+        <tr>
+            <td><code>verificar lamp</code></td>
+            <td class="status success">Pendiente*</td>
+            <td>Script de verificación generado en <code>scripts/verificar_lamp.sh</code>.</td>
+        </tr>
+    </table>
+
+    <h2>Detalle de Comandos</h2>
+    <div class="command-box">
+        $ sudo apt update<br>
+        $ apt install -y ufw<br>
+        E: No se pudo abrir el fichero de bloqueo «/var/lib/dpkg/lock-frontend» - open (13: Permiso denegado)
+    </div>
+
+    <div class="command-box">
+        $ mkdir -p proyectos scripts backups<br>
+        $ ls -la /home/yvnsu/backup_scripts
+    </div>
+
+    <p><i>* Nota: Debido a restricciones en el entorno de ejecución, se han proporcionado scripts automatizados para que el usuario los ejecute directamente.</i></p>
+</body>
+</html>

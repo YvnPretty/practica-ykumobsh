@@ -1,0 +1,16 @@
+# Log de Instalación y Actividad
+Registro de comandos y procesos realizados el 29-04-2026.
+
+## Historial de Comandos
+1. [FALLIDO] apt install -y ufw (Error de permisos: /var/lib/dpkg/lock-frontend).
+2. [EXITO] Creación de estructura de carpetas: proyectos/, scripts/, backups/.
+3. [NUEVO] Generación de script de instalación de Node.js/NVM: scripts/install_node.sh.
+4. [NUEVO] Generación de script de verificación LAMP: scripts/verificar_lamp.sh.
+5. [NUEVO] Reporte HTML para impresión a PDF: historial_comandos.html.
+6. [NUEVO] Script de Git configurado con Token: scripts/subir_a_git.sh.
+
+## Estado de Verificación
+- Estructura de Carpetas: OK
+- NVM/Node: Script listo para ejecución.
+- LAMP: Script de verificación listo.
+- Git: Script configurado con el Token para subir cambios al repositorio `practica-ykumobsh`.
