@@ -1,0 +1,43 @@
+#!/bin/bash
+# Script de respaldo automático para MariaDB - Versión Mejorada
+# Basado en la práctica guiada
+
+# Variables de configuración
+DB_USER="root"
+DB_PASSWORD="tu_password"
+DB_NAME="mi_base"
+BACKUP_DIR="$HOME/backups"
+LOG_FILE="$HOME/backup.log"
+DATE=$(date +%Y-%m-%d_%H-%M-%S)
+
+# Crear carpeta de respaldo si no existe
+mkdir -p "$BACKUP_DIR"
+
+# Redirigir toda la salida al log
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo "-------------------------------------------"
+echo "Fecha: $(date)"
+echo "Iniciando respaldo de la base de datos: $DB_NAME..."
+
+# Crear respaldo usando mysqldump
+mysqldump -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" > "$BACKUP_DIR/$DB_NAME-$DATE.sql"
+
+# Verificar si el respaldo fue exitoso
+if [ $? -eq 0 ]; then
+    echo "Respaldo exportado correctamente."
+    
+    # Comprimir respaldo
+    gzip "$BACKUP_DIR/$DB_NAME-$DATE.sql"
+    echo "Respaldo comprimido: $DB_NAME-$DATE.sql.gz"
+    
+    # Eliminar respaldos antiguos (más de 7 días)
+    echo "Limpiando respaldos antiguos..."
+    find "$BACKUP_DIR" -type f -name "*.gz" -mtime +7 -exec rm -v {} \;
+    
+    echo "Respaldo completado exitosamente."
+else
+    echo "Error: Falló el respaldo de la base de datos."
+    exit 1
+fi
+echo "-------------------------------------------"
