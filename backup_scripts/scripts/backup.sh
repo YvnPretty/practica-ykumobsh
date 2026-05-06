@@ -2,11 +2,10 @@
 # Script de respaldo automático para MariaDB - Versión Mejorada
 # Basado en la práctica guiada
 
-# Variables de configuración (Se recomienda usar el script avanzado con .env)
-# Si usas este script, edita estas variables manualmente:
-DB_USER="PON_AQUI_TU_USUARIO"
-DB_PASSWORD="PON_AQUI_TU_PASSWORD"
-DB_NAME="PON_AQUI_TU_BASE_DE_DATOS"
+# Variables de configuración
+DB_USER="Yakytory"
+DB_PASSWORD="123"
+DB_NAME="--all-databases"
 BACKUP_DIR="$HOME/backups"
 LOG_FILE="$HOME/backup.log"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
