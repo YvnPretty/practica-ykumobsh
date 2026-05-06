@@ -1,40 +1,38 @@
-# Analisis de Negocio Papeleria
+# Práctica: Backups Automáticos de MariaDB
 
-Este proyecto documenta el funcionamiento de una papeleria minorista en Mexico y propone un sistema de software integral para optimizar sus operaciones diarias.
+Este repositorio contiene los scripts y la documentación para la implementación de un sistema de respaldos automáticos para MariaDB en Linux.
 
-# Objetivos del Proyecto
+## Contenido del Repositorio
 
-- Identificar las reglas de negocio de una papeleria real.
-- Analizar procesos criticos como ventas, inventario y facturacion.
-- Proponer una arquitectura de software que apoye las operaciones.
-- Diseñar un modelo de datos eficiente para la gestion del negocio.
+- `backup_scripts/scripts/backup.sh`: Versión básica del script de respaldo (exportación y compresión).
+- `backup_scripts/scripts/backup_avanzado.sh`: Versión avanzada que incluye:
+  - Validación de conexión.
+  - Cifrado con OpenSSL.
+  - Manejo de errores estricto.
+  - Registro de logs detallado.
+  - Soporte para envío remoto via `scp`.
+- `backup_scripts/scripts/.env.example`: Plantilla para configurar las credenciales de base de datos y parámetros de seguridad.
 
-# Procesos Basicos Identificados
+## Instrucciones de Uso
 
-- Ventas y Punto de Venta: Gestion de cobros rapidos y atencion en mostrador.
-- Inventario y Almacen: Control de existencias y alertas de stock minimo.
-- Facturacion Electronica: Emision de comprobantes CFDI segun la normativa del SAT.
-- Compras a Proveedores: Gestion de pedidos, recepcion de mercancia y pagos.
-- Atencion al Cliente: Servicios adicionales como copias, impresiones y tramites.
+1. Copiar el archivo de ejemplo a uno real:
+   ```bash
+   cp backup_scripts/scripts/.env.example .env
+   ```
+2. Editar `.env` con tus credenciales.
+3. Dar permisos de ejecución:
+   ```bash
+   chmod +x backup_scripts/scripts/backup_avanzado.sh
+   ```
+4. Ejecutar el script:
+   ```bash
+   ./backup_scripts/scripts/backup_avanzado.sh
+   ```
 
-# Modulos del Sistema Propuesto
+## Automatización
 
-- Modulo de Ventas: Interfaz para registro de transacciones y emision de tickets.
-- Modulo de Inventario: Administracion del catalogo de productos y movimientos.
-- Modulo Fiscal: Integracion con proveedores de timbrado para facturacion.
-- Modulo de Reportes: Analisis de ventas diarias, productos mas vendidos y ganancias.
-- Modulo de Clientes: Registro de datos fiscales para facturacion recurrente.
+Para ejecutar el respaldo diariamente a las 2 AM, añade la siguiente línea a tu crontab (`crontab -e`):
 
-# Tecnologias Sugeridas
-
-- Base de Datos: PostgreSQL o MySQL por su fiabilidad en datos relacionales.
-- Backend: Node.js o Python (FastAPI) para una logica de negocio rapida.
-- Frontend: React o Angular para una interfaz de usuario moderna y fluida.
-- Facturacion: APIs de proveedores autorizados (PAC) para timbrado CFDI.
-
-# Contenido del Repositorio
-
-- README.md: Descripcion general y guia del proyecto.
-- INVESTIGACION_PREVIA.md: Analisis detallado del funcionamiento del negocio.
-- REGLAS_NEGOCIO.md: Definicion de politicas, restricciones y normativas.
-- PROPUESTA_TECNICA.md: Diseño del sistema, diagramas y arquitectura.
+```cron
+0 2 * * * /home/yvnsu/backup_scripts/scripts/backup_avanzado.sh
+```
